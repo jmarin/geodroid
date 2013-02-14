@@ -9,7 +9,6 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="14" />
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -20,8 +19,6 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
-      
-
         <receiver android:name="org.opengeo.geodroid.Start" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -36,14 +33,16 @@
         </receiver>
 
         <service android:name="org.opengeo.geodroid.GeoDroidService" />
-        
-        <!--  activity android:name="MainActivity"
-                  android:label="@string/app_name">
+
+        <activity
+            android:name="org.opengeo.geodroid.MainActivity"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity-->
+        </activity>
     </application>
 
 </manifest>

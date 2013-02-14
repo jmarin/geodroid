@@ -9,15 +9,20 @@ import org.jeo.nano.FeatureHandler;
 import org.jeo.nano.NanoJeoServer;
 import org.jeo.nano.TileHandler;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Environment;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
 public class GeoDroidService extends Service {
@@ -45,9 +50,14 @@ public class GeoDroidService extends Service {
     }
 
     void notifyStarted() {
+        PendingIntent intent = TaskStackBuilder.create(this)
+            .addNextIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("http://localhost:8000/www/")))
+            .getPendingIntent(0,  PendingIntent.FLAG_ONE_SHOT);
+
         NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
             .setContentTitle("GeoDroid").setContentText("Server online")
-            .setSmallIcon(R.drawable.ic_notify);
+            .setSmallIcon(R.drawable.ic_notify).setContentIntent(intent);
+
         
         NotificationManager nMgr = 
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

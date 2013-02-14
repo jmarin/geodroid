@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GeoDroid</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="pref_onoff">Enabled</string>
+    <string name="pref_onoff_summ">Enable/Disable GeoDroid</string>
+    <string name="hello_world">Hello</string>
+
+</resources>

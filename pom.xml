@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.opengeo</groupId>
+  <artifactId>geodroid</artifactId>
+  <name>GeoDroid</name>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jeo</groupId>
+      <artifactId>jeo-nano</artifactId>
+      <version>${jeo.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jeo</groupId>
+      <artifactId>jeo-geopkg</artifactId>
+      <version>${jeo.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jeo</groupId>
+      <artifactId>jeo-guava</artifactId>
+      <version>${jeo.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>spatialite-android</groupId>
+      <artifactId>spatialite-android</artifactId>
+      <version>20120209</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-android</artifactId>
+      <version>1.6.1-RC1</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+          <outputDirectory>${basedir}/libs</outputDirectory>
+          <excludeScope>provided</excludeScope>
+          <excludeGroupIds>org.json</excludeGroupIds>
+          <excludeArtifactIds>slf4j-api,slf4j-simple,jsqlite</excludeArtifactIds>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+       <artifactId>maven-antrun-plugin</artifactId>
+       <dependencies>
+          <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.6.5</version>
+          </dependency>
+          <dependency>
+            <groupId>ant-contrib</groupId>
+            <artifactId>ant-contrib</artifactId>
+            <version>1.0b3</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>clean</id>
+            <phase>clean</phase>
+            <configuration>
+              <tasks>
+                <delete>
+                  <fileset dir="${basedir}/libs" includes="*.jar"/>
+                </delete>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <jeo.version>1.0-SNAPSHOT</jeo.version>
+  </properties>
+
+</project>

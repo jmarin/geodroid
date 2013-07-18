@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">GeoDroid</string>
-    <string name="menu_settings">Settings</string>
-    <string name="hello_world">Hello</string>
-    <string name="title_activity_main">GeoDroid</string>
-    <string name="online">GeoDroid is currently online.</string>
-    <string name="offline">GeoDroid is currently offline.</string>
-
+    <string name="menu_layers">Layers</string>
+    <string name="menu_refresh">Refresh</string>
 </resources>

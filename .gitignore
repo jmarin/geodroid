@@ -3,4 +3,5 @@
 .settings
 bin
 gen
+target
 libs

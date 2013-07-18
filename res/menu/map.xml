@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/menu_map_layers"
+          android:icon="@drawable/layers"
+          android:title="@string/menu_layers"
+          android:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/menu_map_refresh"
+          android:icon="@drawable/refresh"
+          android:title="@string/menu_refresh"
+          android:showAsAction="ifRoom|withText" />
+</menu>
